@@ -2,7 +2,7 @@ const request = require("supertest");
 const app = require("../app");
 
 describe("POST /api/auth/register", () => {
-  it("creates a new user and returns 201 status", async () => {
+  it("creates a new user and returns 201 with user email", async () => {
     const userPayload = {
       firstName: "Test",
       lastName: "User",
@@ -15,5 +15,6 @@ describe("POST /api/auth/register", () => {
       .send(userPayload);
 
     expect(response.statusCode).toBe(201);
+    expect(response.body.emailId).toBe(userPayload.emailId);
   });
 });
