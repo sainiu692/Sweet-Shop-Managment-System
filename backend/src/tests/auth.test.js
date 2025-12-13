@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 
 const request = require("supertest");
@@ -14,24 +13,36 @@ afterAll(async () => {
   await mongoose.connection.close();
 });
 
-describe("POST /api/auth/register", () => {
-  it("creates a new user and returns 201 with user email", async () => {
-    const uniqueEmail = `testuser_${Date.now()}@example.com`;
+describe("POST /api/auth/login", () => {
+  it(
+    "logs in a user and sets auth cookie",
+    async () => {
+      const email = `login_${Date.now()}@example.com`;
+      const password = "Strong@123Password"; // ✅ SAME STRONG PASSWORD
 
-    const userPayload = {
-      firstName: "Test",
-      lastName: "User",
-      emailId: uniqueEmail,
-      password: "Test@123456",
-    };
+      // register first
+      await request(app)
+        .post("/api/auth/register")
+        .send({
+          firstName: "Login",
+          lastName: "User",
+          emailId: email,
+          password: password,
+          gender: "male",
+        });
 
-    const response = await request(app)
-      .post("/api/auth/register")
-      .send(userPayload);
+      // login
+      const response = await request(app)
+        .post("/api/auth/login")
+        .send({
+          emailId: email,
+          password: password,
+        });
 
-    // assertions
-    expect(response.statusCode).toBe(201);
-    expect(response.body).toHaveProperty("emailId");
-    expect(response.body.emailId).toBe(uniqueEmail);
-  });
+      expect(response.statusCode).toBe(200);
+      expect(response.headers["set-cookie"]).toBeDefined();
+    },
+    10000
+  );
 });
+

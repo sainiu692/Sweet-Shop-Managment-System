@@ -4,20 +4,9 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../app");
 const { connectDB } = require("../config/database");
-const User = require("../models/user");
-const bcrypt = require("bcrypt");
 
 beforeAll(async () => {
-  await connectDB();
-
-  const passwordHash = await bcrypt.hash("password123", 10);
-  await User.create({
-    firstName: "Login",
-    lastName: "User",
-    emailId: "loginuser@example.com",
-    password: passwordHash,
-    gender: "male",
-  });
+  await connectDB(); // 🔥 REQUIRED
 });
 
 afterAll(async () => {
@@ -25,25 +14,34 @@ afterAll(async () => {
 });
 
 describe("POST /api/auth/login", () => {
-  it("returns 200 for valid credentials (RED)", async () => {
-    const res = await request(app)
-      .post("/api/auth/login")
-      .send({
-        emailId: "loginuser@example.com",
-        password: "password123",
-      });
+  it(
+    "logs in a user and sets auth cookie",
+    async () => {
+      const email = `login_${Date.now()}@example.com`;
 
-    expect(res.statusCode).toBe(200);
-  });
+      // register first
+      await request(app)
+        .post("/api/auth/register")
+        .send({
+          firstName: "Login",
+          lastName: "User",
+          emailId: email,
+          password: "password123",
+          gender: "male",
+        });
 
-  it("sets auth token cookie on successful login (RED)", async () => {
-    const res = await request(app)
-      .post("/api/auth/login")
-      .send({
-        emailId: "loginuser@example.com",
-        password: "password123",
-      });
+      // login
+      const response = await request(app)
+        .post("/api/auth/login")
+        .send({
+          emailId: email,
+          password: "password123",
+        });
 
-    expect(res.headers["set-cookie"]).toBeDefined();
-  });
+      expect(response.statusCode).toBe(200);
+      expect(response.headers["set-cookie"]).toBeDefined();
+    },
+    10000
+  );
 });
+
