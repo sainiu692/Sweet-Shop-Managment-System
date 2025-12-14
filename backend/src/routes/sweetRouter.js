@@ -86,6 +86,25 @@ sweetRouter.get("/search", userAuth, async (req, res) => {
   }
 });
 
+sweetRouter.put("/:id", userAuth, adminMiddleware, async (req, res) => {
+  try {
+    const updatedSweet = await Sweet.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    if (!updatedSweet) {
+      return res.status(404).json({ message: "Sweet not found" });
+    }
+
+    res.status(200).json(updatedSweet);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
 
 
 module.exports = sweetRouter;
