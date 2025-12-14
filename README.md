@@ -1,9 +1,14 @@
-# 🍬 Sweet Shop Management System
+🍬 Sweet Shop Management System
 
 A full-stack web application for managing a sweet shop's inventory, user authentication, and purchase workflows. Built following Test-Driven Development (TDD) principles with a modern MERN stack architecture.
 
+
+
+
+
 ## 📋 Table of Contents
 
+- [Screenshots](#-screenshots)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Prerequisites](#-prerequisites)
@@ -13,10 +18,19 @@ A full-stack web application for managing a sweet shop's inventory, user authent
 - [Project Structure](#-project-structure)
 - [API Endpoints](#-api-endpoints)
 - [Testing](#-testing)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [My AI Usage](#-my-ai-usage)
+
 
 ## ✨ Features
+
+## 📸 Screenshots
+
+### Main Page of Website
+![Main Page](screenShots/mainPage.png)
+
+### Test Report
+![Test Report](screenShots/testReport.png)
+
 
 ### Authentication & Authorization
 - User registration and login
@@ -59,6 +73,13 @@ A full-stack web application for managing a sweet shop's inventory, user authent
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Testing**: Vitest & React Testing Library
+
+## 📦 Prerequisites
+
+Before you begin, ensure you have the following installed:
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
+- **MongoDB** (local installation or MongoDB Atlas account)
 
 ## 🚀 Installation
 
@@ -209,3 +230,20 @@ Run backend tests using Jest:
 ```bash
 cd backend
 npm test
+
+
+## 🤖 My AI Usage
+
+This project was developed with the assistance of AI tools to enhance productivity and code quality. The following AI tools were used:
+
+### AI-Assisted Development
+- **Cursor AI** - Used for code generation, refactoring, and debugging throughout the development process
+- **AI Code Completion** - Assisted with boilerplate code, API endpoint creation, and component structure
+- **AI Documentation** - Helped generate comprehensive README documentation and code comments
+
+### Areas Where AI Was Used
+- **Backend Development**: API route setup, middleware implementation, and database schema design
+- **Frontend Development**: React component creation, state management, and UI/UX improvements
+- **Testing**: Test case generation and test structure setup
+- **Documentation**: README file creation and API documentation
+- **Code Review**: Suggestions for code optimization and best practices
