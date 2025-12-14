@@ -52,25 +52,40 @@ sweetRouter.get("/search", userAuth, async (req, res) => {
     const filter = {};
 
     if (name) {
-      filter.name = { $regex: name, $options: "i" };
+      filter.name = {
+        $regex: name.trim(),
+        $options: "i",
+      };
     }
 
     if (category) {
-      filter.category = { $regex: category, $options: "i" };
+      filter.category = {
+        $regex: category.trim(),
+        $options: "i",
+      };
     }
 
     if (minPrice || maxPrice) {
       filter.price = {};
-      if (minPrice) filter.price.$gte = Number(minPrice);
-      if (maxPrice) filter.price.$lte = Number(maxPrice);
+
+      if (minPrice) {
+        filter.price.$gte = Number(minPrice);
+      }
+
+      if (maxPrice) {
+        filter.price.$lte = Number(maxPrice);
+      }
     }
 
     const sweets = await Sweet.find(filter);
     res.status(200).json(sweets);
-  } catch (err) {
-    res.status(400).json({ message: err.message });
+  } catch (error) {
+    res.status(400).json({
+      message: "Failed to search sweets",
+    });
   }
 });
+
 
 
 module.exports = sweetRouter;
