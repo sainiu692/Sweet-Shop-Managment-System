@@ -61,11 +61,20 @@ authRouter.post("/login", async (req, res) => {
       const token = await user.getJWT();
       res.cookie("token", token, {
         httpOnly: true,
-        secure: true, 
-        sameSite: "none", 
+        secure: false,
+        sameSite: "lax",
         expires: new Date(Date.now() + 8 * 360000),
       });
-      res.send(user);
+      res.status(200).json({
+        user: {
+          _id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          emailId: user.emailId,
+          isAdmin: user.isAdmin,
+          token:token
+        },
+      });
     } else {
       throw new Error("invalid credentials!!!!");
     }
