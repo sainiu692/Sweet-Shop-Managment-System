@@ -104,6 +104,19 @@ sweetRouter.put("/:id", userAuth, adminMiddleware, async (req, res) => {
   }
 });
 
+sweetRouter.delete("/:id", userAuth, adminMiddleware, async (req, res) => {
+  try {
+    const deleted = await Sweet.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ message: "Sweet not found" });
+    }
+    res.status(200).json({ message: "Sweet deleted successfully" });
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+
 
 
 
