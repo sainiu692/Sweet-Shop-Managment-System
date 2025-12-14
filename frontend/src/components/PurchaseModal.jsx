@@ -8,7 +8,7 @@ export default function PurchaseModal({
   maxQuantity,
   loading
 }) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState();
   console.log(maxQuantity);
 
   const handleSubmit = (e) => {
@@ -17,7 +17,7 @@ export default function PurchaseModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="fixed inset-0 bg-white/40 backdrop-blur-xs flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-500 to-indigo-500 p-6 rounded-t-2xl">
