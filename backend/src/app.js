@@ -11,7 +11,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
 app.use("/api/sweets", sweetRouter);
-app.use("/api/inventory", inventoryRouter);
+app.use("/api/inventory/sweets", inventoryRouter);
 
 
 app.get("/", (req, res) => {
