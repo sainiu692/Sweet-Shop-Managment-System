@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://sweet-shop-managment-system.onrender.com";
+const API_BASE_URL = "https://sweet-shop-managment-system.onrender.com/api";
 
 class ApiService {
   async request(endpoint, options = {}) {
