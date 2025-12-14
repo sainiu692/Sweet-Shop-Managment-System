@@ -231,7 +231,7 @@ Run backend tests using Jest:
 cd backend
 npm test
 
----
+```
 
 ## 🤖 My AI Usage
 
