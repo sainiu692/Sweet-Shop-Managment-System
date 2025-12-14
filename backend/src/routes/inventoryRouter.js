@@ -5,32 +5,6 @@ const { adminMiddleware } = require("../middleware/adminMiddleware");
 
 const inventoryRouter = express.Router();
 
-
-// inventoryRouter.post("/:id/purchase", userAuth, async (req, res) => {
-//   try {
-//     const sweet = await Sweet.findById(req.params.id);
-
-//     if (!sweet) {
-//       return res.status(404).json({ message: "Sweet not found" });
-//     }
-
-//     if (sweet.quantity <= 0) {
-//       return res.status(400).json({ message: "Sweet is out of stock" });
-//     }
-
-//     sweet.quantity -= 1;
-//     await sweet.save();
-
-//     res.status(200).json({
-//       message: "Sweet purchased successfully",
-//       remainingQuantity: sweet.quantity,
-//       sweet,
-//     });
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
-
 inventoryRouter.post("/:id/purchase", userAuth, async (req, res) => {
   try {
     const { quantity } = req.body; // quantity user wants to buy

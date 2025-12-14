@@ -6,8 +6,8 @@ export default function AddSweets({ sweet, onClose, onSave }) {
   const [formData, setFormData] = useState({
     name: '',
     category: '',
-    price: 0,
-    quantity: 0,
+    price: '',
+    quantity: '',
     imageUrl: '',
   });
   const [loading, setLoading] = useState(false);
