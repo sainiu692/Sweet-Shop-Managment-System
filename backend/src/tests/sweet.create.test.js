@@ -43,7 +43,7 @@ describe("POST /api/sweets", () => {
       .post("/api/sweets")
       .set("Cookie", adminCookie)
       .send({
-        name: "Gulab Jamun"+Date.now(),
+        name: "Gulab Jamun",
         category: "Indian",
         price: 20,
         quantity: 10,
