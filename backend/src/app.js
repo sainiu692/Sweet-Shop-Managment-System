@@ -26,7 +26,7 @@ app.use("/api/inventory/sweets", inventoryRouter);
 
 
 app.get("/", (req, res) => {
-  res.send("Sweet Shop Backend Running");
+  res.send("Sweet Shop Backend Runnning");
 });
 
 module.exports = app;
