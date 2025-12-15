@@ -5,9 +5,20 @@ A full-stack web application for managing a sweet shop's inventory, user authent
 
 
 
+🌐 Live Demo: https://sweet-shop-managment-system-1.onrender.com/
+
+🔑 Admin Account Credentials
+
+- **Email:** ujjwal@gmail.com
+- **Password:** Ujjwal@12345
+
+🔑User Account Credentials
+
+- **Email:** palak@gmail.com
+- **Password:** Palak@12345
+
 
 ## 📋 Table of Contents
-
 - [Screenshots](#-screenshots)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
